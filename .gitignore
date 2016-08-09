@@ -1,0 +1,8 @@
+exclude/**
+bin/**
+obj/**
+
+run.bat
+run.sh
+
+.vscode/**

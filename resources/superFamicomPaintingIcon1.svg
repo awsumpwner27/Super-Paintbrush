@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="superFamicomPaintingIcon1.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="65.832182"
+     inkscape:cy="842.16444"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:object-nodes="false"
+     inkscape:snap-smooth-nodes="false"
+     inkscape:snap-nodes="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-global="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4136" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:#7f7f7f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4144"
+       width="32"
+       height="32"
+       x="320"
+       y="319.36221" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:inline">
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.78853327;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;shape-rendering:auto"
+       d="m 336.36318,346.27126 c -0.57996,0.39749 -2.77994,-4.55215 -4.09894,-7.17537 -2.57327,-5.11771 -2.08618,-5.70281 -1.15395,-6.0943 0.93228,-0.39155 1.68951,-0.18373 3.15644,5.17048 0.82219,3.00093 2.67641,7.7017 2.09645,8.09919 z"
+       id="path4149"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="zszsz" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:8;stroke-dasharray:none;stroke-opacity:1"
+       d="m 330.90212,332.86158 c -3.19024,2.12981 -4.80304,-3.30725 -1.2779,-7.94084 -0.39641,3.93617 5.52201,4.24059 1.2779,7.94084 z"
+       id="path4263"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 329.45545,325.10216 c -1.35484,1.41246 -1.92859,4.07245 -1.79954,5.30645 l 1.94437,0.0368 0.50502,-1.41082 1.48329,0.0857 c -1.00027,-0.80216 -1.54037,-2.48319 -2.13314,-4.01815 z"
+       id="path4265"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       sodipodi:nodetypes="cccc"
+       inkscape:connector-curvature="0"
+       id="path4287"
+       d="m 329.58489,330.7928 c -0.37583,1.02089 -0.76524,2.24114 0.50852,2.55331 l 0.88187,-0.4632 c -1.2213,-0.0751 -1.14459,-1.26185 -1.39039,-2.09011 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 331.13876,332.8326 0.4206,-0.70755 c -0.1356,-0.96211 -0.38956,-0.7471 -1.12598,-1.10793 z"
+       id="path4289"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <path
+       sodipodi:nodetypes="zzzz"
+       inkscape:connector-curvature="0"
+       id="path4291"
+       d="m 330.43165,333.14196 c 0.96004,0.21585 0.22823,-0.11692 0.50899,-0.97272 0.28076,-0.8558 -0.59784,-2.51407 -0.90501,-1.99181 -0.30717,0.52226 -0.56401,2.74867 0.39602,2.96453 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 3"
+     sodipodi:insensitive="true"
+     style="display:none">
+    <image
+       y="319.36221"
+       x="320"
+       id="image4277"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
+jwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAu
+MTCtCgrAAAABQ0lEQVRIS+WW23HDMAwEPW7EVaQ+FZF2XES6SAP5l086+ARCIBmJ9pd3OByQILD0
+S+PL9GY+R3DJsFyT1qF5njFbMwezZL8TqObQHZWciSXqpGf6AlufJRfo4m8XgEFHXwBGHIkgXJ9L
+zJZeDwjbqlMVsJ5IoKXgDgtTWgI/k6WlWwLtWPGOzmcQAszi6/6HwZgpKy7JBcBX+tbfP1cMBF4A
+ao6qAKjMBxJsILVmU8dhQcJpAVDZJvi9LWMlWIcEW/AUcKmZgZU5OgIQennCvhWUDAkI9+30jr4A
+qMsJRyHgV9sWDrUYErB72yGBAqB9O1pSFaAOgynARpoZEC7t3I74GVDA7hyWKF8El4TZGlbPBwAC
+f/224J8s9ewuhwgCsN74QHcQXwHgb3UJsr8hR4kt7EnwdIyT3PGF3cEL3oQW0/QAhOxdzlQ/qewA
+AAAASUVORK5CYII=
+"
+       style="opacity:0.5;image-rendering:optimizeSpeed"
+       preserveAspectRatio="none"
+       height="32"
+       width="32" />
+  </g>
+</svg>
