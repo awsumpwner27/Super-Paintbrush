@@ -1,4 +1,13 @@
+ifeq ($(OS),Windows_NT)
+OPERATINGSYSTEM := Windows
+else
+OPERATINGSYSTEM := $(shell uname -s)
+endif
+ifeq ($(OPERATINGSYSTEM),Windows)
 EXENAME = superpaintbrush.exe
+else ifeq ($(OPERATINGSYSTEM),Linux)
+EXENAME = superpaintbrush
+endif
 INCDIR = include
 RESDIR = resources/
 SRCDIR = src/
@@ -13,7 +22,7 @@ DEPENDS = $(SOURCES:$(SRCDIR)%.c=$(OBJDIR)%.d)
 
 CC = gcc
 CFLAGS = -std=c89 -pedantic-errors -Wall -c -g -I $(INCDIR) -MMD
-LDFLAGS = 
+LDFLAGS = -lm -lSDL2
 
 .PHONY: all clean
 .SECONDARY: $(BINDIR)$(EXENAME)

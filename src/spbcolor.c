@@ -1,4 +1,10 @@
+#include <math.h>
+#include <stdlib.h>
+#include "spbutility.h"
+
 #include "spbcolor.h"
+
+/** Clr **/
 
 /*
 Create and initialize a new color.
@@ -10,9 +16,9 @@ SPBColor spbClrNew(
 ) {
 	SPBColor color;
 
-	color.red = red;
-	color.green = green;
-	color.blue = blue;
+	color.r = red;
+	color.g = green;
+	color.b = blue;
 
 	return color;
 }
@@ -26,9 +32,9 @@ SPBColor spbClrFromSNESColorWord(
 ) {
 	SPBColor color;
 
-	color.red = (snes_color & 0x1F) << 3;
-	color.green = ((snes_color >> 5) & 0x1F) << 3;
-	color.blue = ((snes_color >> 10) & 0x1F) << 3;
+	color.r = (snes_color & 0x1F) << 3;
+	color.g = ((snes_color >> 5) & 0x1F) << 3;
+	color.b = ((snes_color >> 10) & 0x1F) << 3;
 
 	return color;
 }
@@ -44,9 +50,9 @@ SPBColor spbClrAdjustByHighColor(
 	spbuint8_t blue
 ) {
 	/*First, for each channel, all but the least significant 3 bits are zeroed out. Then the adjustments passed in are shifted into placed and OR'd with the channel.*/
-	color.red = (color.red & 0x07) | ((red & 0x1F) << 3);
-	color.green = (color.green & 0x07) | ((green & 0x1F) << 3);
-	color.blue = (color.blue & 0x07) | ((blue & 0x1F) << 3);
+	color.r = (color.r & 0x07) | ((red & 0x1F) << 3);
+	color.g = (color.g & 0x07) | ((green & 0x1F) << 3);
+	color.b = (color.b & 0x07) | ((blue & 0x1F) << 3);
 
 	return color;
 }
@@ -62,9 +68,102 @@ spbuint16_t spbClrGetSNESColorWord(
 ) {
 	spbuint16_t snes_color = 0;
 
-	snes_color |= (color.red >> 3);
-	snes_color |= ((color.green >> 3) << 5);
-	snes_color |= ((color.blue >> 3) << 10);
+	snes_color |= (color.r >> 3);
+	snes_color |= ((color.g >> 3) << 5);
+	snes_color |= ((color.b >> 3) << 10);
 
 	return snes_color;
+}
+
+/** Clf **/
+
+SPBColorf spbClfNew(
+	float red,
+	float green,
+	float blue
+) {
+	SPBColorf colorf;
+
+	colorf.r = red;
+	colorf.g = green;
+	colorf.b = blue;
+
+	return colorf;
+}
+
+SPBColorf spbClfFromClr(
+	SPBColor color
+) {
+	SPBColorf colorf;
+
+	colorf.r = (float)color.r / 255.f;
+	colorf.g = (float)color.g / 255.f;
+	colorf.b = (float)color.b / 255.f;
+
+	return colorf;
+}
+
+SPBColor spbClfToClr(
+	SPBColorf colorf
+) {
+	SPBColor color;
+
+	color.r = (spbuint8_t)floor(colorf.r * 255.f + 0.5f);
+	color.g = (spbuint8_t)floor(colorf.g * 255.f + 0.5f);
+	color.b = (spbuint8_t)floor(colorf.b * 255.f + 0.5f);
+
+	return color;
+}
+
+float spbClfGetChromaticity(
+	SPBColorf colorf
+) {
+	float min_channel = spb_min(spb_min(colorf.r, colorf.g), colorf.b);
+	float max_channel = spb_max(spb_max(colorf.r, colorf.g), colorf.b);
+
+	return max_channel - min_channel;
+}
+
+float spbClfGetHue(
+	SPBColorf colorf
+) {
+	float hue;
+	float chromaticity = spbClfGetChromaticity(colorf);
+	float max_channel = spb_max(spb_max(colorf.r, colorf.g), colorf.b);
+
+	if(chromaticity == 0.f) {
+		/*Hue is undefined.*/
+		hue = 0.f;
+	} else
+	if(max_channel == colorf.r) {
+		hue =
+		(1.f / 6.f) * spb_fwrap((colorf.g - colorf.b) / chromaticity, 6.f);
+	} else
+	if(max_channel == colorf.g) {
+		hue =
+		(1.f / 6.f) * (colorf.b - colorf.r) / chromaticity + 2.f;
+	} else
+	if(max_channel == colorf.b) {
+		hue =
+		(1.f / 6.f) * (colorf.r - colorf.g) / chromaticity + 4.f;
+	}
+	return hue;
+}
+
+float spbClfGetSaturationHSL(
+	SPBColorf colorf
+) {
+	float chromaticity = spbClfGetChromaticity(colorf);
+	float lightness = spbClfGetLightnessHSL(colorf);
+
+	return chromaticity / (1.f - abs(2.f * lightness - 1.f));
+}
+
+float spbClfGetLightnessHSL(
+	SPBColorf colorf
+) {
+	float min_channel = spb_min(spb_min(colorf.r, colorf.g), colorf.b);
+	float max_channel = spb_max(spb_max(colorf.r, colorf.g), colorf.b);
+
+	return (1.f / 2.f) * (min_channel + max_channel);
 }

@@ -4,8 +4,15 @@
 #include "spbintegers.h"
 
 typedef struct {
-	spbuint8_t red, green, blue;
+	spbuint8_t r, g, b;
 } SPBColor; /* Clr */
+
+typedef struct {
+	/*Color channels. All must be on the range [0, 1].*/
+	float r, g, b;
+} SPBColorf; /* Clf */
+
+/** Clr **/
 
 /*
 Create and initialize a new color.
@@ -15,7 +22,6 @@ SPBColor spbClrNew(
 	spbuint8_t green,
 	spbuint8_t blue
 );
-
 
 /*
 Create and initialize a new color via a SNES color word.
@@ -44,5 +50,45 @@ spbuint16_t spbClrGetSNESColorWord(
 	SPBColor
 );
 
+/** Clf **/
+/*
+All values returned from "Get" functions returning floats are on the range [0, 1].
+*/
+
+SPBColorf spbClfNew(
+	float red,
+	float green,
+	float blue
+);
+
+SPBColorf spbClfFromClr(
+	SPBColor
+);
+
+SPBColorf spbClfFromHSL(
+	float hue,
+	float saturation,
+	float lightness
+);
+
+SPBColor spbClfToClr(
+	SPBColorf
+);
+
+float spbClfGetChromaticity(
+	SPBColorf
+);
+
+float spbClfGetHue(
+	SPBColorf
+);
+
+float spbClfGetSaturationHSL(
+	SPBColorf
+);
+
+float spbClfGetLightnessHSL(
+	SPBColorf
+);
 
 #endif

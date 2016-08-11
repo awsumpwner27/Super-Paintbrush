@@ -12,8 +12,8 @@ typedef struct {
 
 enum SPBPaletteSORTTYPE {
 	SPB_SORT_HUE			= 0x00,
-	SPB_SORT_SATURATION		= 0x01,
-	SPB_SORT_LIGHTNESS		= 0x02,
+	SPB_SORT_SATURATION_HSL	= 0x01,
+	SPB_SORT_LIGHTNESS_HSL	= 0x02,
 	SPB_SORT_RED			= 0x03,
 	SPB_SORT_GREEN			= 0x04,
 	SPB_SORT_BLUE			= 0x05,
@@ -49,12 +49,12 @@ void spbPltFree(
 );
 
 /*
-Read little-endian 2-byte SNES color data from a byte buffer.
-	If the word count passed in differs from the palette's number of available entries, a call is made to spbPltResize prior to the buffer being evaluated.
+Read little-endian SNES color data from a byte buffer.
+	The word count corresponds to the count of pairs of bytes to be read in. If the word count passed in differs from the palette's number of available entries, a call is made to spbPltResize prior to the buffer being evaluated.
 */
 void spbPltReadSNESColorsFromByteBuffer(
 	SPBPalette*, /* modify */
-	spbuint16_t* buffer,
+	spbuint8_t* buffer,
 	unsigned int word_count
 );
 
