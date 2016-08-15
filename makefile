@@ -21,7 +21,7 @@ DEPENDS = $(SOURCES:$(SRCDIR)%.c=$(OBJDIR)%.d)
 #	Apparently it's more fitting that a list of all potential object files should be used as a dependency than to simply put a pattern as a dependency for the exe.
 
 CC = gcc
-CFLAGS = -std=c89 -pedantic-errors -Wall -c -g -I $(INCDIR) -MMD
+CFLAGS = -std=c89 -pedantic-errors -Wall -Wno-comments -c -O0 -g -I $(INCDIR) -MMD
 LDFLAGS = -lm -lSDL2
 
 .PHONY: all clean

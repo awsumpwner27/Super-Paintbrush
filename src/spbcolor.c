@@ -137,7 +137,7 @@ float spbClfGetHue(
 	} else
 	if(max_channel == colorf.r) {
 		hue =
-		(1.f / 6.f) * spb_fwrap((colorf.g - colorf.b) / chromaticity, 6.f);
+		(1.f / 6.f) * spb_fwrapf((colorf.g - colorf.b) / chromaticity, 6.f);
 	} else
 	if(max_channel == colorf.g) {
 		hue =

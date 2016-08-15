@@ -7,6 +7,7 @@
 #include "spbtool.h"
 #include "spbpalette.h"
 #include "spbcolor.h"
+#include "spbutility.h"
 
 #ifdef __linux__
 
@@ -33,16 +34,55 @@ void randomBufferPls(void* buffer, size_t count) {
 
 else
 #error Yikes!
-#endif 
+#endif
+
+int compareInt(const void* a, const void* b) {
+	int c = *((int*)a);
+	int d = *((int*)b);
+
+	return (c > d) - (c < d);
+}
 
 int main() {
 	enum SPBPaletteSORTTYPE sort;
 	SPBColor color0;
 	char color_str[5];
 	unsigned char random_str[17];
+	int sort_arr[23];
+	int sort_arr0[7] = {1, 3, 6, 7, 8, 9, 10};
+	int sort_arr1[5] = {0, 2, 4, 5, 11};
+	int sort_res[12];
 	int j;
 
 	/* SPB Testing */
+
+	spb_orderedMerge(sort_arr0, sort_arr1, sort_res, 7, 5, sizeof(int), compareInt);
+	{
+		int i;
+		for(i = 0; i < sizeof(sort_res) / sizeof(int); ++i) {
+			printf("%d ", sort_res[i]);
+		}
+		putchar('\n');
+	}
+
+	{
+		int i;
+		for(i = 0; i < sizeof(sort_arr) / sizeof(int); ++i) {
+			sort_arr[i] = sizeof(sort_arr) / sizeof(int) - i;/*rand()%100;*/
+			printf("%d ", sort_arr[i]);
+		}
+		putchar('\n');
+		spb_stableSort(
+			sort_arr,
+			sizeof(sort_arr) / sizeof(int),
+			sizeof(int),
+			compareInt
+		);
+		for(i = 0; i < sizeof(sort_arr) / sizeof(int); ++i) {
+			printf("%d ", sort_arr[i]);
+		}
+		putchar('\n');
+	}
 
 	color0 = spbClrNew(31, 127, 255);
 	sprintf(color_str, "%x", spbClrGetSNESColorWord(color0));
@@ -58,7 +98,7 @@ int main() {
 
 	/* END */
 
-	printf("%ld\n", randomNumberPls());
+	/*printf("%ld\n", randomNumberPls());
 	printf("%lu\n", sizeof(long int));
 
 	for(j = 0; j < 16; ++j) {
@@ -71,7 +111,7 @@ int main() {
 		}
 		random_str[16] = '\0';
 		printf("%s\n", random_str);
-	}
+	}*/
 
 	return 0;
 }
