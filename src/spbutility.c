@@ -26,6 +26,9 @@ float spb_fwrapf(float x, float y){
 	return wrapped;
 }
 
+/*
+For an unsigned int, compute the highest power of two less than a given number.
+*/
 unsigned int spb_floorToPowerOfTwo(unsigned int a) {
 	unsigned int result; 
 	const size_t bit_count = 8 * sizeof(unsigned int);
@@ -40,12 +43,15 @@ unsigned int spb_floorToPowerOfTwo(unsigned int a) {
 	return result;
 }
 
+/*
+Compute log base 2 for a given float.
+*/
 float spb_log2f(float a) {
 	return log(a) / log(2.f);
 }
 
 /*
-
+Swap the position of two objects in memory.
 */
 void spb_swap(
 	void* a,
@@ -62,42 +68,7 @@ void spb_swap(
 }
 
 /*
-Shift a sequence of values within an array by some amount while refusing to write over elements outside the given bounds. Note that values "jump" into position. Requesting a single zero at the end of an array of integers be moved to the beginning does NOT set all the values to 0.
-*//*
-void spb_shift(
-	int amount,
-	void* subarray_start,
-	void* subarray_end,
-	void* bound_start,
-	void* bound_end,
-	size_t size
-) {
-	if(bound_start > bound_end) {
-		/*Failure. Inverted array.*//*
-		return;
-	}
-
-	if((size * amount) + subarray_start < bound_start) {
-		int offset = bound_start - ((size * amount) + subarray_start);
-		/*By changing the starting point of the subarray, we can avoid shifting past the beginning of the bounds.*//*
-		subarray_start += offset;
-	}
-	if((size * amount) + subarray_end > bound_end) {
-		int offset = bound_end - ((size * amount) + subarray_end);
-		/*By changing the ending point of the subarray, we can avoid shifting past the end of the bounds.*//*
-		subarray_end += offset;
-	}
-
-	if(subarray_start > subarray_end) {
-		/*Failure. Inverted subarray.*//*
-		return;
-	}
-
-
-}*/
-
-/*
-
+Takes two ordered lists and combines them in order while placing them in a buffer (out_buffer) of num_items0 + num_items1 size.
 */
 void spb_orderedMerge(
 	void* base0,
@@ -211,12 +182,12 @@ void spb_stableSort(
 			size,
 			comparator
 		);
-		/*spb_orderedMerge(
+		spb_orderedMerge(
 			base,
 			ACCESS(base, num_items_2floor),
 			scratchpad,
-			num_items_2floor * size,
-			(num_items - num_items_2floor) * size,
+			num_items_2floor,
+			num_items - num_items_2floor,
 			size,
 			comparator
 		);
@@ -224,79 +195,9 @@ void spb_stableSort(
 			base,
 			scratchpad,
 			num_items * size
-		);*/
+		);
 	}
 
 	free(scratchpad);
 	#undef ACCESS
 }
-
-/*
-A stable sort. It retains the pre-existing order of items with identical sorting criteria.
-*//*
-void spb_stableSortOLD(
-    void* base,
-    size_t num_items,
-    size_t size,
-    int (*comparator)(const void*, const void*)
-) {
-	/*Pointer math macro. Depends on size parameter. Undefined with the end of the function body.*//*
-	#define access(ptr, offset) ((void*)((char*)(ptr) + ((offset) * size)))
-
-	int pass_counter;
-	int total_passes =
-		(int)
-		floor(
-			spb_log2f(
-				(float)num_items
-			)
-		);
-	void* scratchpad = malloc(num_items * size);
-
-	for(pass_counter = 0; pass_counter < total_passes; ++pass_counter) {
-		int subarray_size = spb_2powi(pass_counter);
-		int subarray_counter;
-		for(
-			subarray_counter = 0;
-			subarray_counter < (num_items / subarray_size) - 1;
-			subarray_counter += subarray_size * 2
-		) {
-			spb_orderedMerge(
-				access(base, (subarray_counter + 0) * subarray_size),
-				access(base, (subarray_counter + 1) * subarray_size),
-				access(
-					scratchpad,
-					subarray_counter * (subarray_size)
-				),
-				subarray_size,
-				subarray_size,
-				size,
-				comparator
-			);
-		}
-		if(num_items - (subarray_counter) > 0) {
-			memcpy(
-				access(scratchpad, subarray_counter),
-				access(base, subarray_counter),
-				(num_items - subarray_counter) * size
-			);
-		}
-		memcpy(base, scratchpad, num_items * size);
-	}
-	if(num_items > spb_floorToPowerOfTwo(num_items)) {
-		spb_orderedMerge(
-			base,
-			access(base, spb_floorToPowerOfTwo(num_items)),
-			scratchpad,
-			spb_floorToPowerOfTwo(num_items),
-			num_items - spb_floorToPowerOfTwo(num_items),
-			size,
-			comparator
-		);
-		memcpy(base, scratchpad, num_items * size);
-	}
-
-	free(scratchpad);
-
-	#undef access
-}*/

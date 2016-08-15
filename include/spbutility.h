@@ -1,7 +1,6 @@
 #ifndef SPBUTILITY_H
 #define SPBUTILITY_H
 
-/*#define M_SQRT3 1.73205080756887729353*/
 #define spb_min(a, b) ((a) < (b) ? (a) : (b))
 #define spb_max(a, b) ((a) > (b) ? (a) : (b))
 
@@ -15,12 +14,18 @@ Wrap x into the range [0, y). Undefined for a negative or zero y.
 */
 float spb_fwrapf(float x, float y);
 
+/*
+For an unsigned int, compute the highest power of two less than a given number.
+*/
 unsigned int spb_floorToPowerOfTwo(unsigned int a);
 
+/*
+Compute log base 2 for a given float.
+*/
 float spb_log2f(float);
 
 /*
-
+Swap the position of two objects in memory.
 */
 void spb_swap(
     void* a,
@@ -41,7 +46,7 @@ void spb_shift(
 );
 
 /*
-
+Takes two ordered lists and combines them in order while placing them in a buffer (out_buffer) of num_items0 + num_items1 size.
 */
 void spb_orderedMerge(
 	void* base0,
@@ -54,7 +59,7 @@ void spb_orderedMerge(
 );
 
 /*
-Sort guaranteed to be stable.
+A stable sort. It retains the pre-existing order of items with identical sorting criteria.
 */
 void spb_stableSort(
     void* base,
