@@ -42,7 +42,7 @@ void randomBufferPls(void* buffer, size_t count) {
 
 #elif _WIN32
 
-else
+#else
 #error Yikes!
 #endif
 
