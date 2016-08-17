@@ -21,7 +21,10 @@ enum SPBPaletteSORTTYPE {
 	SPB_SORT_ASCENDING		= 0x00, /* default */
 	SPB_SORT_DESCENDING		= 0x08,
 
-	SPB_SORT_PRESERVE_FIRST	= 0x10
+	SPB_SORT_PRESERVE_FIRST	= 0x10,
+
+	SPB_SORT_INDIVIDUAL		= 0x00, /* default */
+	SPB_SORT_GROUP_SIMILAR	= 0x20
 };
 
 /*
@@ -75,6 +78,7 @@ Sort the colors in a palette by some criteria, making no change to the image dat
 void spbPltSort(
 	SPBPalette*, /* modify */
 	unsigned int* order_proxy_buffer, /* out */
+	float plateau_frequency,
 	enum SPBPaletteSORTTYPE /* options */
 );
 

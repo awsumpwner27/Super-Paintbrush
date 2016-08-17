@@ -141,11 +141,11 @@ float spbClfGetHue(
 	} else
 	if(max_channel == colorf.g) {
 		hue =
-		(1.f / 6.f) * (colorf.b - colorf.r) / chromaticity + 2.f;
+		(1.f / 6.f) * ((colorf.b - colorf.r) / chromaticity + 2.f);
 	} else
 	if(max_channel == colorf.b) {
 		hue =
-		(1.f / 6.f) * (colorf.r - colorf.g) / chromaticity + 4.f;
+		(1.f / 6.f) * ((colorf.r - colorf.g) / chromaticity + 4.f);
 	}
 	return hue;
 }

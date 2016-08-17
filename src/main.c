@@ -134,6 +134,22 @@ int main() {
 	sort = SPB_SORT_RED | SPB_SORT_DESCENDING | SPB_SORT_PRESERVE_FIRST;
 	printf("%d\n", sort);
 
+	{
+		SPBPalette* palette = spbPltNew(3, spbClrNew(0u, 0u, 0u));
+
+		palette->entries[0] = spbClrNew(255, 0, 255);
+		palette->entries[1] = spbClrNew(0, 255, 255);
+		palette->entries[2] = spbClrNew(255, 255, 0);
+
+		spbPltSort(
+			palette, NULL,
+			0.f,
+			SPB_SORT_HUE | SPB_SORT_ASCENDING | SPB_SORT_PRESERVE_FIRST | SPB_SORT_INDIVIDUAL
+		);
+
+		spbPltFree(&palette);
+	}
+
 	/* END */
 
 	/*printf("%ld\n", randomNumberPls());

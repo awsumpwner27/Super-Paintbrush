@@ -27,16 +27,17 @@ float spb_fwrapf(float x, float y){
 }
 
 /*
-For an unsigned int, compute the highest power of two less than a given number.
+For an unsigned int, compute the highest power of two less than a given number. If zero is given, return zero.
 */
 unsigned int spb_floorToPowerOfTwo(unsigned int a) {
-	unsigned int result; 
+	unsigned int result = 0; 
 	const size_t bit_count = 8 * sizeof(unsigned int);
+	unsigned int highest_bit = 0x01u << (bit_count - 1);
 	int i;
 
 	for(i = 1; i <= bit_count; ++i) {
 		if((a >> (bit_count - i)) & 0x01u) {
-			result = a & (0x80000000u >> (i - 1));
+			result = a & (highest_bit >> (i - 1));
 			break;
 		}
 	}
